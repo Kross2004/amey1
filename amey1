@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+public class SwitchCaseProgram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Choose an operation:");
+        System.out.println("1. Decimal to Binary");
+        System.out.println("2. Factorial");
+        System.out.println("3. Squaring of Number");
+        System.out.println("4. Armstrong Number Check");
+        
+        int choice = scanner.nextInt();
+        
+        switch (choice) {
+            case 1:
+                decimalToBinary();
+                break;
+            case 2:
+                calculateFactorial();
+                break;
+            case 3:
+                squareNumber();
+                break;
+            case 4:
+                checkArmstrongNumber();
+                break;
+            default:
+                System.out.println("Invalid choice");
+        }
+        
+        scanner.close();
+    }
+    
+    public static void decimalToBinary() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a decimal number: ");
+        int decimal = scanner.nextInt();
+        String binary = Integer.toBinaryString(decimal);
+        System.out.println("Binary representation: " + binary);
+        scanner.close();
+    }
+    
+    public static void calculateFactorial() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number to calculate its factorial: ");
+        int n = scanner.nextInt();
+        long factorial = 1;
+        
+        for (int i = 1; i <= n; i++) {
+            factorial *= i;
+        }
+        
+        System.out.println("Factorial of " + n + " is " + factorial);
+        scanner.close();
+    }
+    
+    public static void squareNumber() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number to square: ");
+        double num = scanner.nextDouble();
+        double square = num * num;
+        System.out.println("Square of " + num + " is " + square);
+        scanner.close();
+    }
+    
+    public static void checkArmstrongNumber() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number to check for Armstrong number: ");
+        int number = scanner.nextInt();
+        int originalNumber = number;
+        int result = 0;
+        
+        while (originalNumber != 0) {
+            int remainder = originalNumber % 10;
+            result += Math.pow(remainder, 3); // Assuming it's a 3-digit Armstrong number
+            originalNumber /= 10;
+        }
+        
+        if (result == number) {
+            System.out.println(number + " is an Armstrong number.");
+        } else {
+            System.out.println(number + " is not an Armstrong number.");
+        }
+        
+        scanner.close();
+    }
+}
